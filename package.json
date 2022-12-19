@@ -1,0 +1,38 @@
+{
+  "name": "@pretto/graphql-codegen-loader",
+  "version": "1.0.0",
+  "repository": "git@github.com:finspot/graphql-codegen-loader.git",
+  "author": "Sylvain Reucherand <sylvain@pretto.fr>",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "main": "index.js",
+  "devDependencies": {
+    "@pretto/eslint-config-pretto": "^1.4.0",
+    "@pretto/prettier-config-pretto": "^1.1.0",
+    "eslint": "^8.30.0",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@graphql-codegen/cli": "^2.16.1",
+    "@graphql-codegen/import-types-preset": "^2.2.6",
+    "@graphql-codegen/typescript": "^2.8.5",
+    "@graphql-codegen/typescript-operations": "^2.5.10",
+    "fs-extra": "^11.1.0",
+    "schema-utils": "^4.0.0"
+  },
+  "peerDependencies": {
+    "graphql": ">=15",
+    "typescript": ">=4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@pretto/eslint-config-pretto"
+    ]
+  },
+  "prettier": "@pretto/prettier-config-pretto",
+  "packageManager": "yarn@3.3.0"
+}
