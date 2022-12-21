@@ -4,7 +4,7 @@
 
 A [Webpack](https://webpack.js.org/) [loader](https://webpack.js.org/loaders/) to seamlessly integrate [GraphQL Code Generator](https://the-guild.dev/graphql/codegen) into your development workflow.
 
-## Table of Contents
+## Table of contents
 
 - [Installation](#installation)
 - [Introduction](#introduction)
