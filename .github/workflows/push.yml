@@ -1,0 +1,45 @@
+name: Push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    if: ${{ startsWith(github.event.head_commit.message, '[skip ci]') == false }}
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Config
+        run: |
+          git config --local user.email "tech+githubbot@pretto.fr"
+          git config --local user.name "pretto-bot"
+
+      - name: Version
+        run: npm version minor -m "[skip ci] graphql-codegen-loader@%s"
+
+      - name: Push
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.BOT_TOKEN }}
+          branch: master
+          tags: true
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
