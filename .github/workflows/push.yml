@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    if: ${{ startsWith(github.event.head_commit.message, '[skip ci]') == false }}
+    if: ${{ startsWith(github.event.head_commit.message, '[CI]') == false }}
 
     runs-on: ubuntu-20.04
 
@@ -30,7 +30,7 @@ jobs:
           git config --local user.name "pretto-bot"
 
       - name: Version
-        run: npm version minor -m "[skip ci] graphql-codegen-loader@%s"
+        run: npm version minor -m "[CI] graphql-codegen-loader@%s"
 
       - name: Push
         uses: ad-m/github-push-action@v0.6.0
