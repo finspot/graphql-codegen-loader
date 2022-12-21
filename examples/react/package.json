@@ -6,7 +6,7 @@
     "test": "eslint ./ && jest && tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.2",
+    "@apollo/client": "^3.7.3",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "graphql": "^16.6.0",
@@ -24,7 +24,7 @@
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@pretto/eslint-config-pretto": "^1.4.0",
-    "@pretto/graphql-codegen-loader": "^1.0.0",
+    "@pretto/graphql-codegen-loader": "^1.1.2",
     "@pretto/prettier-config-pretto": "^1.1.0",
     "@types/jest": "^29.2.4",
     "@types/lodash": "^4.14.191",
