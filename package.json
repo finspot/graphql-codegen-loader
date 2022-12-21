@@ -1,6 +1,6 @@
 {
   "name": "@pretto/graphql-codegen-loader",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "repository": "git@github.com:finspot/graphql-codegen-loader.git",
   "author": "Sylvain Reucherand <sylvain@pretto.fr>",
   "files": [
