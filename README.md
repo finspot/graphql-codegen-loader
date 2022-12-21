@@ -15,7 +15,8 @@ A [Webpack](https://webpack.js.org/) [loader](https://webpack.js.org/loaders/) t
 ## Installation
 
 ```sh
-yarn add --dev @pretto/graphql-codegen-loader graphql typescript
+yarn add graphql typescript
+yarn add --dev @pretto/graphql-codegen-loader
 ```
 
 ## Introduction
