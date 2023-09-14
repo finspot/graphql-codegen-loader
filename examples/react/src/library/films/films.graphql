@@ -1,10 +1,7 @@
 query Films {
   allFilms {
     films {
-      director
-      id
-      releaseDate
-      title
+      ...FilmBase
     }
   }
 }

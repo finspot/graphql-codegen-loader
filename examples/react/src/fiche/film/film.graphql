@@ -1,10 +1,7 @@
 query Film($id: ID!) {
   film(id: $id) {
-    director
-    id
+    ...FilmBase
     openingCrawl
     producers
-    releaseDate
-    title
   }
 }

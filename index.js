@@ -6,6 +6,7 @@ const cache = new Map()
 
 const defaultOptions = {
   emitFiles: false,
+  fragmentsPaths: [],
   plugins: [],
   typescriptConfig: 'tsconfig.json',
   useWorspaces: false,
@@ -16,6 +17,12 @@ const schema = {
   properties: {
     emitFiles: {
       type: 'boolean',
+    },
+    fragmentsPaths: {
+      items: {
+        anyOf: [{ type: 'string' }],
+      },
+      type: 'array',
     },
     plugins: {
       items: {

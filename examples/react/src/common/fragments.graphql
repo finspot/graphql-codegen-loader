@@ -1,0 +1,6 @@
+fragment FilmBase on Film {
+  director
+  id
+  releaseDate
+  title
+}

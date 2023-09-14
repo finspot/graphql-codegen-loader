@@ -30,6 +30,7 @@ module.exports = {
                 loader: '@pretto/graphql-codegen-loader',
                 options: {
                   emitFiles: true,
+                  fragmentsPaths: [path.join(__dirname, 'src/common/fragments.graphql')],
                   plugins: ['typescript-react-apollo'],
                   schema: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
                   schemaTypesPath: path.join(__dirname, 'src/types'),
