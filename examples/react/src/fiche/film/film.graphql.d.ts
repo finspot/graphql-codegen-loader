@@ -1,5 +1,12 @@
 import * as Types from '../../types/schema';
 import * as Apollo from '@apollo/client';
+export type FilmBaseFragment = {
+    __typename?: 'Film';
+    director?: string | null;
+    id: string;
+    releaseDate?: string | null;
+    title?: string | null;
+};
 export type FilmQueryVariables = Types.Exact<{
     id: Types.Scalars['ID'];
 }>;
@@ -7,14 +14,15 @@ export type FilmQuery = {
     __typename?: 'Root';
     film?: {
         __typename?: 'Film';
-        director?: string | null;
-        id: string;
         openingCrawl?: string | null;
         producers?: Array<string | null> | null;
+        director?: string | null;
+        id: string;
         releaseDate?: string | null;
         title?: string | null;
     } | null;
 };
+export declare const FilmBaseFragmentDoc: Apollo.DocumentNode;
 export declare const FilmDocument: Apollo.DocumentNode;
 /**
  * __useFilmQuery__

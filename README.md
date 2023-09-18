@@ -70,21 +70,22 @@ module.exports = {
 
 **Root**
 
-| Name             | Type                  | Required | Default value   | Description |
-|------------------|-----------------------|----------|-----------------|-------------|
-| emitFiles        | `boolean`             | ❌       | `false`         | If true, <ins>graphql-codegen-loader</ins> will generate a declaration file beside all imported document files (see. [Bare usage](#bare-usage)) |
-| plugins          | `(Plugin \| string)[]` | ❌       | `[]`           | Plugins to be added to the GraphQl Code Generator configuration (cf. [plugins](https://the-guild.dev/graphql/codegen/plugins)). |
-| schema           | `string`              | ✅       | N/A             | GraphQL schema (cf. [schema field](https://the-guild.dev/graphql/codegen/docs/config-reference/schema-field)). |
-| schemaTypesPath  | `string`              | ✅       | N/A             | Folder where the default types will be added. During compile time, <ins>graphql-codegen-loader</ins> will generate a declaration file for all your schema types (interfaces, scalars...): **schema.d.ts**. If your schema contains enums, it will also generate a Typescript file: **enums.ts**, to refer to enums (as a type and as a value) in your application. |
-| typescriptConfig | `string`              | ❌       | `tsconfig.json` | Path to your Typescript configuration file. |
-| useWorkspaces    | `boolean`             | ❌       | `false`         | If true, all the generated files will refer to other files using the `@workspace/` syntax instead of a relative import. |
+| Name             | Type                   | Required | Default value   | Description                                                                                                                                                                                                                                                                                                                                                        |
+| ---------------- | ---------------------- | -------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| emitFiles        | `boolean`              | ❌       | `false`         | If true, <ins>graphql-codegen-loader</ins> will generate a declaration file beside all imported document files (see. [Bare usage](#bare-usage))                                                                                                                                                                                                                    |
+| fragmentsPaths   | `string[]`             | ❌       | `[]`            | List of fragments file path that are shared across multiple queries and therefore need to be interpreted by <ins>graphql-codegen-loader</ins>.                                                                                                                                                                                                                     |
+| plugins          | `(Plugin \| string)[]` | ❌       | `[]`            | Plugins to be added to the GraphQl Code Generator configuration (cf. [plugins](https://the-guild.dev/graphql/codegen/plugins)).                                                                                                                                                                                                                                    |
+| schema           | `string`               | ✅       | N/A             | GraphQL schema (cf. [schema field](https://the-guild.dev/graphql/codegen/docs/config-reference/schema-field)).                                                                                                                                                                                                                                                     |
+| schemaTypesPath  | `string`               | ✅       | N/A             | Folder where the default types will be added. During compile time, <ins>graphql-codegen-loader</ins> will generate a declaration file for all your schema types (interfaces, scalars...): **schema.d.ts**. If your schema contains enums, it will also generate a Typescript file: **enums.ts**, to refer to enums (as a type and as a value) in your application. |
+| typescriptConfig | `string`               | ❌       | `tsconfig.json` | Path to your Typescript configuration file.                                                                                                                                                                                                                                                                                                                        |
+| useWorkspaces    | `boolean`              | ❌       | `false`         | If true, all the generated files will refer to other files using the `@workspace/` syntax instead of a relative import.                                                                                                                                                                                                                                            |
 
 **Plugin**
 
-| Name    | Type   | Required | Default value | Description |
-|---------|--------|----------|---------------|-------------|
+| Name    | Type   | Required | Default value | Description       |
+| ------- | ------ | -------- | ------------- | ----------------- |
 | options | object | ❌       | {}            | Plugin's options. |
-| plugin  | string | ✅       | N/A           | Plugin's name. |
+| plugin  | string | ✅       | N/A           | Plugin's name.    |
 
 ## Usage
 
@@ -121,6 +122,7 @@ query Films {
 ```ts
 // index.ts
 import { FilmsQuery } from './films.gql'
+
 // FilmsQuery is a type
 ```
 
@@ -142,23 +144,24 @@ This comes very handy. It generates 2 files:
 
 ```ts
 // films.gql.d.ts
-import * as Types from '../../types/schema';
+import * as Types from '../../types/schema'
+
 export type FilmsQueryVariables = Types.Exact<{
-    [key: string]: never;
-}>;
+  [key: string]: never
+}>
 export type FilmsQuery = {
-    __typename?: 'Root';
-    allFilms?: {
-        __typename?: 'FilmsConnection';
-        films?: Array<{
-            __typename?: 'Film';
-            director?: string | null;
-            id: string;
-            releaseDate?: string | null;
-            title?: string | null;
-        } | null> | null;
-    } | null;
-};
+  __typename?: 'Root'
+  allFilms?: {
+    __typename?: 'FilmsConnection'
+    films?: Array<{
+      __typename?: 'Film'
+      director?: string | null
+      id: string
+      releaseDate?: string | null
+      title?: string | null
+    } | null> | null
+  } | null
+}
 ```
 
 From now on, your IDE should be able to understand `*.gql` imports, and your type checking should not throw any errors.
