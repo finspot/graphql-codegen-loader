@@ -73,11 +73,11 @@ module.exports = function (content, map, meta) {
   const resourcePath = this.resourcePath
   const typescriptPath = `${resourcePath}.ts`
 
-  const lastRunAt = cache.get('lastRunAt')
+  const processedSchemas = cache.get('schemas') ?? []
 
-  cache.set('lastRunAt', Date.now())
+  cache.set('schemas', [...processedSchemas, options.schema])
 
-  generate(resourcePath, typescriptPath, this.rootContext, lastRunAt, options)
+  generate(resourcePath, typescriptPath, this.rootContext, !processedSchemas.includes(options.schema), options)
     .then(typesFiles => {
       for (const typesFile of typesFiles) {
         if (typesFile.filename === typescriptPath) {
