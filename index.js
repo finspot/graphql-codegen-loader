@@ -8,6 +8,7 @@ const defaultOptions = {
   emitFiles: false,
   fragmentsPaths: [],
   plugins: [],
+  scalars: {},
   typescriptConfig: 'tsconfig.json',
   useWorspaces: false,
 }
@@ -39,6 +40,19 @@ const schema = {
         ],
       },
       type: 'array',
+    },
+    scalars: {
+      additionalProperties: {
+        anyOf: [
+          { type: 'string' },
+          {
+            properties: { input: { type: 'string' }, output: { type: 'string' } },
+            required: ['input', 'output'],
+            type: 'object',
+          },
+        ],
+      },
+      type: 'object',
     },
     schema: {
       type: 'string',
